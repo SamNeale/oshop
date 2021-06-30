@@ -6,23 +6,26 @@ import { UserService } from 'shared/services/user.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  constructor(private userService: UserService, private authService: AuthService, router: Router) {
-    authService.$user.subscribe(user => {
+  constructor(
+    private userService: UserService,
+    private authService: AuthService,
+    router: Router
+  ) {
+    authService.$user.subscribe((user) => {
       if (user) {
         userService.save(user);
 
         let returnUrl = localStorage.getItem('returnUrl') as string;
 
-        if (returnUrl){
+        if (returnUrl) {
           console.log(returnUrl);
           router.navigateByUrl(returnUrl);
           localStorage.removeItem('returnUrl');
         }
       }
-    })
-
+    });
   }
 }

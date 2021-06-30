@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
         cart.subscribe(
           (cart) =>
             (this.totalItemCount = (
-              cart as unknown as ShoppingCart
+              cart as ShoppingCart
             ).totalItemsCount())
         )
       );
