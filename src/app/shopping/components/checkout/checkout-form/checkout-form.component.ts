@@ -1,10 +1,10 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'shared/services/auth.service';
-import { OrderService } from 'shared/services/order.service';
 import { Subscription } from 'rxjs';
 import { Order } from 'shared/models/orders';
 import { ShoppingCart } from 'shared/models/shopping-cart';
+import { AuthService } from 'shared/services/auth.service';
+import { OrderService } from 'shared/services/order.service';
 
 @Component({
   selector: 'checkout-form',
@@ -27,7 +27,7 @@ export class CheckoutFormComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.userSub.unsubscribe();
   }
-  
+
   ngOnInit() {
     this.userSub = this.authService.$user.subscribe(
       (user) => (this.userId = user?.uid as string)

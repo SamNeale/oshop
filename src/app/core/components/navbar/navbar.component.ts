@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ShoppingCart } from 'shared/models/shopping-cart';
 import { AuthService } from 'shared/services/auth.service';
 import { ShoppingCartService } from 'shared/services/shopping-cart.service';
 import { UserService } from 'shared/services/user.service';
-import { ShoppingCart } from 'shared/models/shopping-cart';
 
 @Component({
   selector: 'navbar',
@@ -28,9 +28,9 @@ export class NavbarComponent implements OnInit {
       .then((cart) =>
         cart.subscribe(
           (cart) =>
-            this.totalItemCount = (
+            (this.totalItemCount = (
               cart as unknown as ShoppingCart
-            ).totalItemsCount()
+            ).totalItemsCount())
         )
       );
   }

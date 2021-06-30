@@ -65,13 +65,12 @@ export class ShoppingCartService {
       .pipe(take(1))
       .subscribe((item) => {
         if (item.payload.exists()) {
+          let quantity =
+            (item.payload.child('quantity').val() as number) + change;
 
-          let quantity = (item.payload.child('quantity').val() as number) + change;
-
-          if (quantity === 0){
+          if (quantity === 0) {
             $item.remove();
-          } 
-          else {
+          } else {
             $item.update({
               quantity: quantity,
             });

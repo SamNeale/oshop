@@ -1,9 +1,8 @@
-import { query } from '@angular/animations';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Order } from 'shared/models/orders';
+
 import { ShoppingCartService } from './shopping-cart.service';
 
 @Injectable({
@@ -36,8 +35,9 @@ export class OrderService {
   }
 
   getAllOrdersForUser(userId: string) {
-    return this.db.list('orders', (ref) =>
-      ref.orderByChild('userId').equalTo(userId)
-    ).snapshotChanges().pipe(map(order => order as unknown as Order));
+    return this.db
+      .list('orders', (ref) => ref.orderByChild('userId').equalTo(userId))
+      .snapshotChanges()
+      .pipe(map((order) => order as unknown as Order));
   }
 }

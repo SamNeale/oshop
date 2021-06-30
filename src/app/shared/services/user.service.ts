@@ -3,31 +3,30 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import * as firebase from 'firebase';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-
   adminUsers = ['Sam Neale', 'John Cena'];
 
-  constructor(private afDb: AngularFireDatabase) { }
+  constructor(private afDb: AngularFireDatabase) {}
 
   save(user: firebase.default.User) {
-    firebase.default.database().ref('products/users/' + user.uid)
+    firebase.default
+      .database()
+      .ref('products/users/' + user.uid)
       .update({
-        name: user.displayName, 
+        name: user.displayName,
         email: user.email,
-        admin: this.isAdmin(user)
+        admin: this.isAdmin(user),
       });
   }
 
   isAdmin(user: firebase.default.User): boolean {
-
-    for (let i = 0; i < this.adminUsers.length; i++){
-      if (this.adminUsers[i] === user.displayName){
+    for (let i = 0; i < this.adminUsers.length; i++) {
+      if (this.adminUsers[i] === user.displayName) {
         return true;
       }
     }
-
     return false;
   }
 }

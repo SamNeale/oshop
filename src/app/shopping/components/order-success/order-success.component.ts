@@ -5,11 +5,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './order-success.component.html',
   styleUrls: ['./order-success.component.css']
 })
-export class OrderSuccessComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class OrderSuccessComponent  {
 
 }
