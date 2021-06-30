@@ -1,0 +1,14 @@
+.form-layout {
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-top: 20px;
+}
+
+.card-layout {
+    padding-top: 50px;  
+}
+
+.button {
+    margin-right: 10px;
+    width: 100px;
+}

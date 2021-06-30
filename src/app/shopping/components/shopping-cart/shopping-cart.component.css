@@ -1,0 +1,11 @@
+.shopping-cart {
+    margin-left: 20%;
+    margin-right: 10%;
+}
+
+.thumbnail {
+    border-radius: 100%;
+    width: 80px;
+    height: 80px;
+    background-size: cover;
+}   

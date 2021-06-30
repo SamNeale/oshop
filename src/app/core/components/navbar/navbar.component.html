@@ -1,0 +1,57 @@
+<!-- NAVBAR -->
+<ul ngbNav #nav="ngbNav" class="nav-tabs navbar-light bg-light">
+
+  
+  <li ngbNavItem>
+    <a ngbNavLink [routerLink]="''" class="nav-brand">
+      <i class="fa fa-home"></i>
+    </a>
+  </li>
+  <li ngbNavItem>
+    <a ngbNavLink [routerLink]="'shopping-cart'" class="nav-item">
+      <i class="fa fa-shopping-cart" style="padding-right: 5px"></i>
+      <span *ngIf="totalItemCount !== 0" class="badge badge-warning bade-pill">
+        {{ totalItemCount }}
+      </span>
+    </a>
+  </li>
+  <li *ngIf="authService.$user | async as user; else anonymousUser" ngbNavItem>
+    <a ngbNavLink>
+      <div ngbDropdown class="d-inline-block">
+        <button
+          class="btn btn-light navbar-dropdown button"
+          id="dropdown"
+          ngbDropdownToggle
+        >
+          <i class="fa fa-user"></i>
+          {{ user?.displayName }}
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdown " class="fixed-top">
+          <button ngbDropdownItem [routerLink]="'my-orders'">My Orders</button>
+          <button
+            ngbDropdownItem
+            [routerLink]="'admin/manage-orders'"
+            *ngIf="userService.isAdmin(user)"
+          >
+            Manage Orders
+          </button>
+          <button
+            ngbDropdownItem
+            [routerLink]="'admin/manage-products'"
+            *ngIf="userService.isAdmin(user)"
+          >
+            Manage Products
+          </button>
+          <button ngbDropdownItem (click)="logout()">Logout</button>
+        </div>
+      </div>
+    </a>
+  </li>
+  <ng-template #anonymousUser>
+    <li ngbNavItem>
+      <a ngbNavLink [routerLink]="'login'" class="nav-item">
+        <i class="fa fa-user"></i> Log in
+      </a>
+    </li>
+  </ng-template>
+</ul>

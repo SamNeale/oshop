@@ -1,0 +1,14 @@
+.navbar-dropdown {
+  padding: 0px;
+  background-color: white;
+  border-block-color: white;
+}
+
+.nav-item {
+  color: #212529;
+}
+
+.button {
+  background-color: transparent;
+  border-color: transparent;
+}
